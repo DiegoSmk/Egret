@@ -52,5 +52,9 @@ const GlobalStyle = createGlobalStyle`
   html, body {
     font-family: TitilliumWeb;
   }
+  // add for me
+  a:link { 
+    text-decoration:none; 
+  } 
 `
 export default GlobalStyle

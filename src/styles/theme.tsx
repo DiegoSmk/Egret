@@ -1,14 +1,14 @@
 const theme = {
   colors: {
     background: '#000',
-    backgroundNav: '#cac8c4',
+    grayStander: '#cac8c4',
     text: '#f2f2f2',
     rsNinha: '#9b51e0',
     red: '#eb5757',
     yellow: '#f2c94c',
     vdd: '#6fcf97',
     blueBtn: '#2d9cdb',
-    blueLine: '#56ccf2',
+    blueLight: '#56ccf2',
     grad1: '#78e4c4',
     grad2: '#9262f0',
     shadow: '#555',

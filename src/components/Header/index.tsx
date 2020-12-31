@@ -1,7 +1,8 @@
 import React from 'react'
+import Burger from './burger'
 import {
   Container,
-  Content,
+  HeaderWrapper,
   LogoContainer,
   LogoIcon,
   Logo,
@@ -13,18 +14,19 @@ import {
 function Header() {
   return (
     <Container>
-      <Content>
+      <HeaderWrapper>
         <LogoContainer>
           <LogoIcon src="/images/logoIcon.svg"></LogoIcon>
           <Logo src="/images/logo.svg"></Logo>
         </LogoContainer>
-        <OptionsContainer>
+        <Burger />
+        {/* <OptionsContainer>
           <Icon src="/images/logoIcon.svg"></Icon>
           <Avatar>
             <img src="/images/logoIcon.svg"></img>
           </Avatar>
-        </OptionsContainer>
-      </Content>
+        </OptionsContainer> */}
+      </HeaderWrapper>
     </Container>
   )
 }
