@@ -1,16 +1,18 @@
 import React from 'react'
 import ProfileComponents from '../components/profile'
 import { signIn, signOut, useSession } from 'next-auth/client'
+import { Button } from '../components/details/button'
+import { NextPage } from 'next'
+import NothingHere from '../components/Layout/nothingHere'
 
-const Profile = () => {
+const Profile = (): JSX.Element => {
   const [session, loading] = useSession()
   return (
     <>
       {!session && (
-        <div>
-          Not signed in <br />
-          <button onClick={(): Promise<void> => signIn()}>Sign in</button>
-        </div>
+        <NothingHere>
+          <Button onClick={(): Promise<void> => signIn()}>Sign in</Button>
+        </NothingHere>
       )}
       {session && (
         <ProfileComponents
