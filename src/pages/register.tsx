@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { NextPage } from 'next'
+import Router from 'next/router'
 import {
   Formik,
   Form,
@@ -20,8 +21,8 @@ import {
   AiOutlineMail,
   AiOutlineFileProtect
 } from 'react-icons/ai'
+import { signIn, useSession } from 'next-auth/client'
 // import createUser from '../middleware/signUp'
-
 const TelaLogin = styled.h1`
   width: 360px;
   padding: 8% 0 0;
@@ -84,6 +85,11 @@ const Register: NextPage = () => {
   // const [session, loading] = useSession()
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState(null)
+  const [session] = useSession()
+
+  if (session) {
+    Router.push('http://localhost:3000/profile')
+  }
 
   async function onSubmit({ username, email, password, acceptedTerms }) {
     const data = {
