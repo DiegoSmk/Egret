@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import Burger from './burger'
 import {
   Container,
@@ -16,16 +17,12 @@ function Header() {
     <Container>
       <HeaderWrapper>
         <LogoContainer>
-          <LogoIcon src="/images/logoIcon.svg"></LogoIcon>
+          <Link href="/" passHref>
+            <LogoIcon src="/images/logoIcon.svg"></LogoIcon>
+          </Link>
           <Logo src="/images/logo.svg"></Logo>
         </LogoContainer>
         <Burger />
-        {/* <OptionsContainer>
-          <Icon src="/images/logoIcon.svg"></Icon>
-          <Avatar>
-            <img src="/images/logoIcon.svg"></img>
-          </Avatar>
-        </OptionsContainer> */}
       </HeaderWrapper>
     </Container>
   )

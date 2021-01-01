@@ -32,6 +32,7 @@ export const LogoContainer = styled.div`
 
 export const LogoIcon = styled.img`
   width: 28px;
+  cursor: pointer;
 `
 
 export const Logo = styled.img`
@@ -44,6 +45,17 @@ export const Logo = styled.img`
 export const OptionsContainer = styled.div`
   display: flex;
   align-items: center;
+  width: 100px;
+  justify-content: center;
+  @media screen and (max-width: 768px) {
+    display: block;
+    padding: 15px 0;
+    border-bottom: 2px solid ${props => props.theme.colors.shadow};
+
+    button {
+      margin: 0 5px;
+    }
+  }
 `
 
 export const Icon = styled.img`
@@ -52,10 +64,14 @@ export const Icon = styled.img`
 `
 
 export const Avatar = styled.div`
-  flex: 0 0 40px;
-  margin-left: 30px;
-  position: relative;
+  display: flex;
+  justify-content: center;
   cursor: pointer;
+  margin: 0 30px;
+
+  @media screen and (max-width: 768px) {
+    margin: 0;
+  }
 
   > img {
     width: 40px;
@@ -73,6 +89,11 @@ export const Avatar = styled.div`
     vertical-align: middle;
     line-height: 32px;
     border-radius: 50%;
+
+    @media screen and (max-width: 768px) {
+      width: 80px;
+      height: 80px;
+    }
   }
 `
 export const NavButton = styled.li`
@@ -103,6 +124,34 @@ export const NavButton = styled.li`
   a:active,
   a:hover {
     transition: 0.2s;
+  }
+  @media screen and (max-width: 768px) {
+    :first-child {
+      margin-top: 200px;
+    }
+  }
+`
+
+export const HeaderBurger = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media screen and (max-width: 768px) {
+    display: block;
+    position: absolute;
+  }
+`
+
+export const MobileInf = styled.span`
+  display: none;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    margin: 15px 0;
+    color: ${props => props.theme.colors.shadow};
+    font-weight: 800px;
+    font-size: 0.8rem;
+    justify-content: center;
   }
 `
 // New Model

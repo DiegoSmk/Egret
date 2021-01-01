@@ -2,7 +2,15 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import SmoothScrolling from '../../utils/smoothScrolling'
-import { NavButton } from './styles'
+import {
+  NavButton,
+  OptionsContainer,
+  MobileInf,
+  Avatar,
+  HeaderBurger
+} from './styles'
+import { signIn, signOut, useSession } from 'next-auth/client'
+import { Button } from '../details/button'
 // interfaces -----------------------------------------------------------------------
 interface OpenClose {
   open: true | false
@@ -58,12 +66,31 @@ const Ul = styled.ul`
 // JSX RightNav ---------------------------------------------------------------------
 // TODO - Portfolio - about - team
 const RightNav = ({ open }: OpenClose) => {
+  const [session, loading] = useSession()
   return (
     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <Ul open={open} className="navbar-right">
         <LinkScroll name="Service" />
         <LinkScroll name="Timeline" />
         <LinkScroll name="Contact" />
+        {!session && (
+          <OptionsContainer>
+            <Button onClick={(): Promise<void> => signIn()}>Sign in</Button>
+          </OptionsContainer>
+        )}
+        {session && (
+          <HeaderBurger>
+            <OptionsContainer>
+              <Avatar>
+                <img src="/images/logoIcon.svg"></img>
+              </Avatar>
+              <MobileInf>
+                {session.user.email} <br />
+              </MobileInf>
+              <Button onClick={(): Promise<void> => signOut()}>Sign out</Button>
+            </OptionsContainer>
+          </HeaderBurger>
+        )}
       </Ul>
     </div>
   )

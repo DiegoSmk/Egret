@@ -10,7 +10,7 @@ import {
 } from 'formik'
 import { FormGroup } from '../../components/Form/styles'
 import schema from '../../utils/schema'
-import Layout from '../../components/Layout'
+import { Container } from '../../components/Layout/styles'
 import { signIn } from 'next-auth/client'
 import { ComponentFieldEgret } from '../../components/Form'
 import { AiOutlineUser, AiOutlineFileProtect } from 'react-icons/ai'
@@ -28,10 +28,10 @@ export default function SignIn(): JSX.Element {
     })
   }
   return (
-    <Layout>
+    <Container>
       <FormGroup>
         <Formik
-          validationSchema={schema}
+          // validationSchema={schema}
           onSubmit={onSubmit}
           initialValues={{
             username: '',
@@ -58,13 +58,13 @@ export default function SignIn(): JSX.Element {
               <p className="mensagem">
                 Não está registrado?
                 <Link href="/register">
-                  <a>Criar uma conta</a>
+                  <a> Criar uma conta</a>
                 </Link>
               </p>
             </Form>
           )}
         </Formik>
       </FormGroup>
-    </Layout>
+    </Container>
   )
 }

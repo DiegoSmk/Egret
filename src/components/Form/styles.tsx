@@ -2,8 +2,7 @@ import styled from 'styled-components'
 
 export const LabelEgret = styled.label`
   width: 100%;
-  margin-bottom: 16px;
-  padding: 8px;
+  display: block;
 
   [placeholder] {
     color: #555;
@@ -38,16 +37,18 @@ export const FieldEgret = styled.div`
 export const FormGroup = styled.div`
   position: relative;
   z-index: 1;
-  background: #ffffff;
+  background: ${props => props.theme.colors.rsNinha};
   max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 
-  label,
-  input,
-  textarea {
+  label {
+    padding: 8px 0;
+  }
+
+  input {
     padding: 8px;
   }
 

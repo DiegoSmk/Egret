@@ -1,11 +1,9 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 100vw;
   display: flex;
-  justify-content: flex-flex-start;
-  flex: 1 1 auto;
-  padding-top: 70px;
+  padding: 14.3% 0;
+  background-color: ${props => props.theme.colors.grayStander};
 `
 
 export const SidebarContainer = styled.div`
@@ -17,9 +15,5 @@ export const SidebarContainer = styled.div`
 `
 
 export const ContentContainer = styled.div`
-  flex: 1;
   margin: 0 auto;
-  padding: 50px 20px;
-  display: flex;
-  max-width: 1194px;
 `
