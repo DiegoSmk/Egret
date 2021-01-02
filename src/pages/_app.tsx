@@ -1,5 +1,6 @@
 import React from 'react'
 import { AppProps } from 'next/app'
+import { Provider } from 'next-auth/client'
 // imports global-css
 import { ThemeProvider } from 'styled-components'
 import theme from '../styles/theme'
@@ -10,7 +11,9 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <Provider session={pageProps.session}>
+          <Component {...pageProps} />
+        </Provider>
       </ThemeProvider>
     </>
   )
