@@ -21,7 +21,8 @@ import {
   AiOutlineMail,
   AiOutlineFileProtect
 } from 'react-icons/ai'
-import { signIn, useSession } from 'next-auth/client'
+import { getSession, useSession } from 'next-auth/client'
+import Loading from '../components/details/loading'
 // import createUser from '../middleware/signUp'
 const TelaLogin = styled.h1`
   width: 360px;
@@ -81,15 +82,22 @@ const TelaLogin = styled.h1`
 //   }).then(data => data)
 // }
 
-const Register: NextPage = () => {
+const Register = (): JSX.Element => {
   // const [session, loading] = useSession()
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState(null)
-  const [session] = useSession()
+  // verify user connected - INIT
+  // Don't forget of the - import { getSession, useSession } from 'next-auth/client'
+  const [session, loading] = useSession()
 
-  if (session) {
-    Router.push('http://localhost:3000/profile')
+  if (loading) {
+    return <Loading />
   }
+
+  if (!loading && session) {
+    Router.push('/')
+  }
+  // verify user connected - END
 
   async function onSubmit({ username, email, password, acceptedTerms }) {
     const data = {
@@ -119,6 +127,7 @@ const Register: NextPage = () => {
     if (successMessage === null) {
       return (
         <>
+          <span className="loader"></span>
           <Formik
             validationSchema={schema}
             onSubmit={onSubmit}

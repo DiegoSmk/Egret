@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import Router from 'next/router'
 import {
   Formik,
   Form,
@@ -11,11 +12,27 @@ import {
 import { FormGroup } from '../../components/Form/styles'
 import schema from '../../utils/schema'
 import { Container } from '../../components/Layout/styles'
-import { signIn } from 'next-auth/client'
+import { signIn, useSession } from 'next-auth/client'
 import { ComponentFieldEgret } from '../../components/Form'
 import { AiOutlineUser, AiOutlineFileProtect } from 'react-icons/ai'
+import Loading from '../../components/details/loading'
 
 export default function SignIn(): JSX.Element {
+  // verify user connected - INIT
+  // Don't forget of the -
+  // import { getSession, useSession } from 'next-auth/client'
+  // and import Router from 'next/router'
+  const [session, loading] = useSession()
+
+  if (loading) {
+    return <Loading />
+  }
+
+  if (!loading && session) {
+    Router.push('/profile')
+  }
+  // verify user connected - END
+
   function onSubmit({ username, password }) {
     const body = {
       username: username,
