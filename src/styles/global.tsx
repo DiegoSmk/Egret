@@ -57,5 +57,14 @@ const GlobalStyle = createGlobalStyle`
   a:link { 
     text-decoration:none; 
   } 
+  // Added for Loading center
+body, html {
+    height: 100%;
+    text-align: center;
+}
+
+#__next {
+  height: 100%;
+}
 `
 export default GlobalStyle
