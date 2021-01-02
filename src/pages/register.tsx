@@ -1,6 +1,12 @@
+// IMPORT React
 import React, { useState } from 'react'
+// IMPORT Next
 import { NextPage } from 'next'
+import Link from 'next/link'
 import Router from 'next/router'
+// IMPORT NextAuth
+import { getSession, useSession } from 'next-auth/client'
+// IMPORT Formik
 import {
   Formik,
   Form,
@@ -9,78 +15,23 @@ import {
   FormikProps,
   FormikValues
 } from 'formik'
-import schema from '../utils/schema'
-// import { useSession, signIn } from 'next-auth/client'
+// IMPORT StyledComponents
 import styled from 'styled-components'
-import Layout from '../components/Layout'
-import { makeRequest } from '../utils/http'
-import { FormGroup } from '../components/Form/styles'
-import { ComponentFieldEgret } from '../components/Form'
+// IMPORT ReactIcons
 import {
   AiOutlineUser,
   AiOutlineMail,
   AiOutlineFileProtect
 } from 'react-icons/ai'
-import { getSession, useSession } from 'next-auth/client'
+// IMPORT Local
+import schema from '../utils/schema'
+import Layout from '../components/Layout'
+import { makeRequest } from '../utils/http'
+import { FormGroup } from '../components/Form/styles'
+import { ComponentFieldEgret } from '../components/Form'
 import Loading from '../components/details/loading'
-// import createUser from '../middleware/signUp'
-const TelaLogin = styled.h1`
-  width: 360px;
-  padding: 8% 0 0;
-  margin: auto;
-
-  .container {
-    position: relative;
-    z-index: 1;
-    max-width: 300px;
-    margin: 0 auto;
-  }
-  .container:before,
-  .container:after {
-    content: '';
-    display: block;
-    clear: both;
-  }
-  .container .info {
-    margin: 50px auto;
-    text-align: center;
-  }
-  .container .info h1 {
-    margin: 0 0 15px;
-    padding: 0;
-    font-size: 36px;
-    font-weight: 300;
-    color: #1a1a1a;
-  }
-  .container .info span {
-    color: #4d4d4d;
-    font-size: 12px;
-  }
-  .container .info span a {
-    color: #000000;
-    text-decoration: none;
-  }
-  .container .info span .fa {
-    color: #ef3b3a;
-  }
-  body {
-    background: #d9d9d9;
-    background: -webkit-#d9d9d9;
-    background: -moz-#d9d9d9;
-    background: -o-#d9d9d9;
-    font-family: 'Roboto', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-`
-// const createUser = ({ userData: any }) => {
-//   return makeRequest('POST', '/user/signup', {
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(userData)
-//   }).then(data => data)
-// }
+import { SignUp } from '../components/Register'
+import { Logo, LogoIcon } from '../components/Header/styles'
 
 const Register = (): JSX.Element => {
   // const [session, loading] = useSession()
@@ -190,11 +141,15 @@ const Register = (): JSX.Element => {
     }
   }
   return (
-    <Layout>
-      <TelaLogin className="tela-login">
+    <>
+      <Link href="/" passHref>
+        <LogoIcon src="/images/logoIcon.svg"></LogoIcon>
+      </Link>
+      <Logo src="/images/logo.svg"></Logo>
+      <SignUp>
         <FormGroup>{errorOrSuccess()}</FormGroup>
-      </TelaLogin>
-    </Layout>
+      </SignUp>
+    </>
   )
 }
 
